@@ -13,11 +13,13 @@ RUN git config --global user.name "$GIT_USER_NAME" \
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update
+
+RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
+	apt-get install -yq nodejs build-essential
+
 RUN apt-get install --assume-yes --verbose-versions \
   apt-utils \
   mysql-client \
-  nodejs \
-  nodejs-legacy \
   npm \
   ncbi-blast+ \
   primer3
